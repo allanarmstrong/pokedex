@@ -8,16 +8,32 @@ const Pokedex = () => {
     results: []
   });
 
+  const fetchPokemon = () => {
+    if (pokemon.results.length) return;
+    const pokedex = localStorage.getItem("pokedex");
+    if (!pokedex) {
+      fetch(`${CONSTANTS.API_URL}/pokemon/?limit=20`)
+        .then(res => res.json())
+        .then(json => {
+          console.log(json);
+          localStorage.setItem("pokedex", JSON.stringify(json));
+          setPokemon(json);
+        });
+    } else {
+      setPokemon(JSON.parse(pokedex));
+    }
+  };
   useEffect(() => {
-    const endpoint = `${window.CONSTANTS.API_URL}/pokemon/?limit=807`;
-    if (pokemon.results.length > 0) return;
-    fetch(endpoint)
-      .then(res => res.json())
-      .then(res => setPokemon(res));
-  }, [pokemon]);
+    fetchPokemon();
+  });
+
   return (
     <div>
-      {pokemon.length === 0 ? <Loader /> : <PokeList pokemon={pokemon} />}
+      {pokemon.results.length === 0 ? (
+        <Loader />
+      ) : (
+        <PokeList pokemon={pokemon} />
+      )}
     </div>
   );
 };
