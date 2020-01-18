@@ -12,14 +12,15 @@ const Pokedex = () => {
     if (pokemon.results.length) return;
     const pokedex = localStorage.getItem("pokedex");
     if (!pokedex) {
-      fetch(`${CONSTANTS.API_URL}/pokemon/?limit=20`)
+      fetch(`${CONSTANTS.API_URL}/pokemon/?limit=${CONSTANTS.POKEMON_COUNT}`)
         .then(res => res.json())
         .then(json => {
-          console.log(json);
+          CONSTANTS.POKEMON = json.results;
           localStorage.setItem("pokedex", JSON.stringify(json));
           setPokemon(json);
         });
     } else {
+      CONSTANTS.POKEMON = JSON.parse(pokedex).results;
       setPokemon(JSON.parse(pokedex));
     }
   };

@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import styled from "styled-components";
+import { capitalise, leadingZeroes } from "../utils";
 
 const Pokemon = styled.div`
   margin-bottom: var(--gutter);
@@ -19,24 +21,14 @@ const ID = styled.span`
   margin-bottom: 10px;
 `;
 
-const leadingZeroes = number => {
-  var s = number + "";
-  while (s.length < 3) s = "0" + s;
-  return s;
-};
-
-const capitaliseName = name =>
-  name
-    .split("-")
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join(" ");
-
 const PokeCard = ({ pokemon, id }) => {
-  const name = capitaliseName(pokemon.name);
+  const name = capitalise(pokemon.name);
   return (
     <Pokemon>
       <ID>{leadingZeroes(id)}</ID>
-      <Name>{name}</Name>
+      <Name>
+        <Link to={`/pokemon/${pokemon.name}`}>{name}</Link>
+      </Name>
     </Pokemon>
   );
 };
