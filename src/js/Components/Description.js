@@ -8,6 +8,10 @@ const Refresh = styled.button`
   border: 0;
 `;
 
+const Reference = styled.p`
+  font-size: 13px;
+`;
+
 const Description = ({ descriptions }) => {
   const [description, setDescription] = useState();
 
@@ -30,7 +34,10 @@ const Description = ({ descriptions }) => {
         Description <Refresh onClick={refreshDescription}>🔃</Refresh>
       </h3>
       <p>{description.flavor_text.replace(//g, " ")}</p>
-      <p> - From Pokemon {capitalise(description.version.name)}</p>
+      <Reference>
+        Entry from Pokémon{" "}
+        <strong>{capitalise(description.version.name)}</strong>
+      </Reference>
     </>
   );
 };

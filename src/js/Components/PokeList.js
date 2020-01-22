@@ -6,7 +6,7 @@ const PokeList = ({ pokemon }) => {
   return (
     <div>
       <p>
-        There are {CONSTANTS.POKEMON_COUNT} Pokemon in the world! Which one do
+        There are {CONSTANTS.POKEMON_COUNT} Pokémon in the world! Which one do
         you want to learn about?
       </p>
       {pokemon.results.map((pokemon, index) => (

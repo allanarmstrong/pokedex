@@ -5,9 +5,6 @@ import { capitalise } from "../utils";
 import styled from "styled-components";
 
 const Evolution = ({ evolution }) => {
-  console.log(evolution);
-  const evolutions = [];
-  console.log(evolutions);
   return (
     <>
       <div>{capitalise(evolution.name)}</div>

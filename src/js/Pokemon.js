@@ -66,7 +66,11 @@ const Stats = styled.div`
 `;
 
 const Content = styled.div`
-  grid-area: 3 / 1 / 6 / 7;
+  grid-area: 2 / 1 / 6 / 7;
+
+  @media screen and (max-width: 768px) {
+    grid-area: 3 / 1 / 6 / 7;
+  }
 `;
 
 const Pokemon = ({ name }) => {
@@ -79,15 +83,12 @@ const Pokemon = ({ name }) => {
         setPokemon(json);
       })
       .catch(err => {
-        console.log("Couldn't find pokemon");
         setPokemon({});
-        console.log(err);
       });
   });
   if (!pokemon) return <Loader />;
   const missingPokemon =
     Object.entries(pokemon).length === 0 && pokemon.constructor === Object;
-  console.log("HasPokemon?");
   if (missingPokemon) {
     return (
       <div>

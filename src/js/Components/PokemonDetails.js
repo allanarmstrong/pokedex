@@ -19,8 +19,6 @@ const PokemonDetails = ({ pokemon }) => {
     setDetails(speciesDetails);
   };
 
-  console.log(details);
-
   useEffect(() => {
     fetchDetails();
   }, []);
