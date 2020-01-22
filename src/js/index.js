@@ -4,6 +4,7 @@ import { Router } from "@reach/router";
 
 import Pokedex from "./Pokedex";
 import Pokemon from "./Pokemon";
+import NotFound from "./NotFound";
 
 const localPokedex = localStorage.getItem("pokedex");
 
@@ -20,6 +21,7 @@ if (localPokedex) {
 
 ReactDOM.render(
   <Router>
+    <NotFound default />
     <Pokedex path="/" />
     <Pokemon path="/pokemon/:name" />
   </Router>,

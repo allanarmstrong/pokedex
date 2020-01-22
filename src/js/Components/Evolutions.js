@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "@reach/router";
 import styled from "styled-components";
 import { capitalise } from "../utils";
 
@@ -28,16 +29,14 @@ const Evolutions = ({ initialEvolution }) => {
     return (
       <React.Fragment key={evolutionId}>
         <Evolution>
-          <a href={`/pokemon/${evolution.species.name}`}>
+          <Link to={`/pokemon/${evolution.species.name}`}>
             <img src={pokemonImage} width="200" alt={evolution.species.name} />
-          </a>
+          </Link>
           {capitalise(evolution.species.name)}
         </Evolution>
-        <EvolutionGroup>
-          {evolution.evolves_to.map(evolution =>
-            constructEvolutionList(evolution)
-          )}
-        </EvolutionGroup>
+        {evolution.evolves_to.map(evolution =>
+          constructEvolutionList(evolution)
+        )}
       </React.Fragment>
     );
   };

@@ -57,3 +57,13 @@ h3,
 .h2 {
   font-size: 24px;
 }
+
+a {
+  color: var(--color);
+  text-decoration: none;
+
+  &:hover {
+    color: var(--secondaryColor);
+    text-decoration: underline;
+  }
+}
