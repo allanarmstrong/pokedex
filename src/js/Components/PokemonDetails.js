@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import Loader from "./Loader";
 import Description from "./Description";
-import Evolution from "./Evolution";
+import Evolutions from "./Evolutions";
 
 const PokemonDetails = ({ pokemon }) => {
   const [details, setDetails] = useState();
@@ -26,10 +26,11 @@ const PokemonDetails = ({ pokemon }) => {
   const descriptions = details.flavor_text_entries
     .filter(flavor => flavor.language.name === "en")
     .reverse();
+  const firstEvolution = details.evolution_chain.chain;
   return (
     <>
       <Description descriptions={descriptions} />
-      <Evolution evolution_chain={details.evolution_chain} />
+      <Evolutions initialEvolution={firstEvolution} />
     </>
   );
 };
