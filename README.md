@@ -15,7 +15,7 @@ A Pokédex I built so I can learn how [Parcel](https://parceljs.org/) works.
 1. Development files are found in `src/`
 2. Entry point is `src/html/index.html`
 
-### Development
+### Commands
 
 `yarn develop` - Starts a dev server on `localhost:1234`
 
